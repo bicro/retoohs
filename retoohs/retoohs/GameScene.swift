@@ -70,10 +70,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //draw player
         player.position = CGPointMake(self.size.width/2, 40)
         self.addChild(player)
-        createEnemy1(CGPointMake(500, 500))
+        createEnemy1(CGPointMake(500, 700))
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
-        //createEnemy2(CGPointMake(1024, 500))
+        createEnemy1(CGPointMake(700, 700))
 
 
         
@@ -152,9 +152,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if healthValue <= 0 {
             enemy.removeFromParent()
             active_Enemy.removeAtIndex(indexValue)
-            //TODO: Update index for elements in array.
+            var i = 0
+            for item in active_Enemy{
+                item.userData!.setValue(Int(i), forKey: "index")
+            }
         }
-        println(active_Enemy)
+ 
     
     }
     
@@ -184,6 +187,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
     }
+    
     
     func createEnemy1(position1:CGPoint){
 //        let enemy1 = enemy()
@@ -227,22 +231,66 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemy2.position = position1
         active_Enemy.append(enemy2)
         self.addChild(enemy2)
+        let speed = Float(2.0)
+        
+        let enemy_End_Positon_1 = CGPoint(x: position1.x, y: (position1.y - 300))
+        let enemy_duration_1 = NSTimeInterval(speed)
+        let enemy_Move_1 = SKAction.moveTo(enemy_End_Positon_1, duration: enemy_duration_1)
+        
+        let enemy_End_Positon_2 = CGPoint(x: position1.x, y: position1.y)
+        let enemy_duration_2 = NSTimeInterval(speed)
+        let enemy_Move_2 = SKAction.moveTo(enemy_End_Positon_2, duration: enemy_duration_2)
+        
+        enemy2.runAction(SKAction.repeatAction(SKAction.sequence([enemy_Move_1,enemy_Move_2]), count: 100))
         
         
         
         
-//        let enemy_End_Position_1 = CGFloat(enemy2.position.y - 600)
-//        let enemy_duration_1 = NSTimeInterval(2.0)
-//        let enemy_Move_1 = SKAction.moveToY(enemy_End_Position_1, duration:enemy_duration_1)
-//        
-//        
-//        let enemy_End_Position_2 = CGFloat(enemy2.position.y)
-//        let enemy_duration_2 = NSTimeInterval(2.0)
+        //var test = CGVectorMake(CGFloat(0),CGFloat(-400))
+        //let enemy_End_Position_1 = CGPoint(x: position1.x, y: position1.y-300)
+        //let enemy_duration_1 = NSTimeInterval(1.0)
+        //let enemy_Move_1 = SKAction.moveTo(enemy_End_Position_1, duration: enemy_duration_1)
+        //let enemy_Move_V1 = SKAction.moveBy(CGVectorMake(0, 100), duration: 1)
+        //let enemy_Move_V2 = SKAction.moveBy(CGVectorMake(<#dx: CGFloat#>, <#dy: CGFloat#>)
+        
+        
+            //enemy2.runAction(enemy_Move_V1)
+        
+//        let enemy_End_Position_2 = CGPoint(x: position1.x, y: position1.y)
+//        let enemy_duration_2 = NSTimeInterval(3.0)
+//        let enemy_Move_2 = SKAction.moveTo(enemy_End_Position_2, duration: enemy_duration_2)
+        
+//        enemy2.runAction(SKAction.sequence([enemy_Move_1,enemy_Move_2]))
+        
+        
+//        var startPositionY = enemy2.position.y
+//        let enemy_End_Position_1 = CGFloat(startPositionY - 300)
+//        let enemy_duration_1 = NSTimeInterval(3.0)
+//        let enemy_Move_1 = SKAction.moveTo(CGPointMake(enemy2.position.x,startPositionY - 300), duration: enemy_duration_1)
+//        println(startPositionY - 300)
+        //let enemy_Move_1 = SKAction.moveToY(enemy_End_Position_1, duration:enemy_duration_1)
+        
+        
+//        let enemy_End_Position_2 = CGFloat(startPositionY)
+//        let enemy_duration_2 = NSTimeInterval(3.0)
+//        let enemy_Move_2 = SKAction.moveTo(CGPointMake(enemy2.position.x,700), duration: enemy_duration_1)
+//        println(startPositionY)
 //        let enemy_Move_2 = SKAction.moveToY(enemy_End_Position_2, duration:enemy_duration_2)
-//
-//        let enemy_Move_Done = SKAction.removeFromParent()
-//
-//        enemy2.runAction(SKAction.sequence([enemy_Move_1,enemy_Move_2,enemy_Move_Done]))
+    
+
+        //let enemy_Move_Done = SKAction.removeFromParent()
+        
+
+//        enemy2.runAction(SKAction.sequence([enemy_Move_1,enemy_Move_2]))
+    //$var action1 = enemy2.runAction(enemy_Move_1)
+        
+//        var myIndex = enemy2.userData?.valueForKey("index")!
+//        var indexValue = myIndex! as Int
+//        active_Enemy.removeAtIndex(indexValue)
+//        var i = 0
+//        for item in active_Enemy{
+//            item.userData!.setValue(Int(i), forKey: "index")
+//        }
 
 
 
@@ -356,12 +404,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var enemy_One_Last_Update = NSTimeInterval(0)
     var time_Since_Enemy_One = NSTimeInterval(0)
-    var time_Until_Next_Action_Enemy_One = NSTimeInterval(0.75)
+    var time_Until_Next_Action_Enemy_One = NSTimeInterval(0.5)
     override func update(currentTime: CFTimeInterval) {
         
         let delta_Enemy_One = currentTime - enemy_One_Last_Update
         enemy_One_Last_Update = currentTime
         time_Since_Enemy_One += delta_Enemy_One
+        var attacked = Int(0)
         
         
         for enemy in active_Enemy{
@@ -369,9 +418,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             var typeValue = myString! as Int
             if (time_Since_Enemy_One >= time_Until_Next_Action_Enemy_One) && (typeValue == 1) {
                 enemy_One_Spawn_Bullets(enemy.position)
-                time_Since_Enemy_One = NSTimeInterval(0)
-                time_Until_Next_Action_Enemy_One = NSTimeInterval(0.75)
+                attacked = 1
             }
+        }
+        if attacked == 1{
+            time_Since_Enemy_One = NSTimeInterval(0)
+            time_Until_Next_Action_Enemy_One = NSTimeInterval(0.75)
+            attacked = 0
         }
         
         if bulletFired == 1{
