@@ -90,6 +90,7 @@ class GameScene: SKScene {
         if ((playerY - y) < self.size.height - 100) && ((playerY - y) > 30){
             self.player.position.y -= y
         }
+        fireGun()
 
         
         
@@ -109,6 +110,20 @@ class GameScene: SKScene {
         
         
 
+    }
+    func fireGun(){
+        let bullet: SKSpriteNode = SKSpriteNode(imageNamed: "missile")
+        addChild(bullet)
+        bullet.position = self.player.position
+        let bullet_End_Position = CGFloat(self.size.width - 330)
+        let bullet_Speed = CGFloat(500)
+        let bullet_Duration = NSTimeInterval(self.size.width / bullet_Speed)
+        
+        let bullet_Move = SKAction.moveToY(bullet_End_Position, duration: bullet_Duration)
+        let bullet_Move_Done = SKAction.removeFromParent()
+        bullet.runAction(SKAction.sequence([bullet_Move, bullet_Move_Done]))
+        
+    
     }
     
    
