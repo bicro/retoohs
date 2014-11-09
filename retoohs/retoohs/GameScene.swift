@@ -91,12 +91,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(player)
         
         generateLevel()
+        spawnEnemies()
         
-        for i in 0...1{
-            createEnemy1(levelList[i].position)
-        }
-        levelList.removeAtIndex(0)
-        levelList.removeAtIndex(1)
         
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
@@ -104,6 +100,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        createEnemy1(CGPointMake(700, 700))
 
 
+        
+    }
+    func spawnEnemies(){
+        for i in 0...1{
+            if levelList[i].type == 1{
+                createEnemy1(levelList[i].position)
+            }else{
+                createEnemy2(levelList[i].position)
+            }
+        }
+        levelList.removeAtIndex(0)
+        levelList.removeAtIndex(0)
         
     }
     
@@ -207,13 +215,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         levelList.append(type: Int(1), position: CGPointMake(600, 500))
         levelList.append(type: Int(1), position: CGPointMake(400, 700))
         levelList.append(type: Int(1), position: CGPointMake(600, 700))
+        
+        levelList.append(type: Int(2), position: CGPointMake(700, 500))
+        levelList.append(type: Int(2), position: CGPointMake(600, 500))
+        levelList.append(type: Int(2), position: CGPointMake(600, 700))
+        levelList.append(type: Int(2), position: CGPointMake(500, 700))
     }
     
     
     
-    func fireGun(){
+    func fireGun1(){
         let bullet: SKSpriteNode = SKSpriteNode(imageNamed: "missile")
-        bullet.setScale(CGFloat(0.3))
+        bullet.setScale(CGFloat(0.2))
         
         bullet.physicsBody = SKPhysicsBody(circleOfRadius: bullet.size.width/2)
         bullet.physicsBody?.dynamic = true
@@ -236,30 +249,56 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func fireGun2(){
+        let bullet: SKSpriteNode = SKSpriteNode(imageNamed: "missile")
+        bullet.setScale(CGFloat(0.2))
+        
+        bullet.physicsBody = SKPhysicsBody(circleOfRadius: bullet.size.width/2)
+        bullet.physicsBody?.dynamic = true
+        bullet.physicsBody?.categoryBitMask = bulletCategory
+        bullet.physicsBody?.contactTestBitMask = enemyCategory
+        bullet.physicsBody?.collisionBitMask = 0
+        bullet.physicsBody?.usesPreciseCollisionDetection = true
+        
+        bullet.position = self.player.position
+        self.addChild(bullet)
+        let bullet_End_Position = CGPointMake(bullet.position.x+175, bullet.position.y+750)
+        let bullet_Duration = NSTimeInterval(0.8)
+        
+        let bullet_Move = SKAction.moveTo(bullet_End_Position, duration: bullet_Duration)
+        if bullet.position.y < self.size.height {
+            let bullet_Move_Done = SKAction.removeFromParent()
+            bullet.runAction(SKAction.sequence([bullet_Move, bullet_Move_Done]))
+        }
+        
+    }
+    func fireGun3(){
+        let bullet: SKSpriteNode = SKSpriteNode(imageNamed: "missile")
+        bullet.setScale(CGFloat(0.2))
+        
+        bullet.physicsBody = SKPhysicsBody(circleOfRadius: bullet.size.width/2)
+        bullet.physicsBody?.dynamic = true
+        bullet.physicsBody?.categoryBitMask = bulletCategory
+        bullet.physicsBody?.contactTestBitMask = enemyCategory
+        bullet.physicsBody?.collisionBitMask = 0
+        bullet.physicsBody?.usesPreciseCollisionDetection = true
+        
+        bullet.position = self.player.position
+        self.addChild(bullet)
+        let bullet_End_Position = CGPointMake(bullet.position.x-175, bullet.position.y+750)
+        let bullet_Duration = NSTimeInterval(0.8)
+        
+        let bullet_Move = SKAction.moveTo(bullet_End_Position, duration: bullet_Duration)
+        if bullet.position.y < self.size.height {
+            let bullet_Move_Done = SKAction.removeFromParent()
+            bullet.runAction(SKAction.sequence([bullet_Move, bullet_Move_Done]))
+        }
+        
+    }
+    
     
     func createEnemy1(position1:CGPoint){
-//        let enemy1 = enemy()
-//        
-//        
-//        enemy1.setPhysics(enemyCategory, bulletCategory: bulletCategory)
-//        
-//        enemy1.position = position1
-//
-//        addChild(enemy1)
-//        enemy1.sprite.position = position1
-//        
-//        
-//        enemy1.sprite.physicsBody = SKPhysicsBody(rectangleOfSize: enemy1.sprite.size)
-//        enemy1.sprite.physicsBody?.dynamic = true
-//        enemy1.sprite.physicsBody?.categoryBitMask = enemyCategory
-//        enemy1.sprite.physicsBody?.contactTestBitMask = bulletCategory
-//        enemy1.sprite.physicsBody?.collisionBitMask = 0
-//
-//        
-//        addChild(enemy1.sprite)
-        
-//
-        
+      
         let enemy2: SKSpriteNode = SKSpriteNode(imageNamed: "enemy")
         enemy2.userData = NSMutableDictionary()
         
@@ -290,94 +329,45 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let enemy_Move_2 = SKAction.moveTo(enemy_End_Positon_2, duration: enemy_duration_2)
         
         enemy2.runAction(SKAction.repeatAction(SKAction.sequence([enemy_Move_1,enemy_Move_2]), count: 100))
-        
-        
-        
-        
-        //var test = CGVectorMake(CGFloat(0),CGFloat(-400))
-        //let enemy_End_Position_1 = CGPoint(x: position1.x, y: position1.y-300)
-        //let enemy_duration_1 = NSTimeInterval(1.0)
-        //let enemy_Move_1 = SKAction.moveTo(enemy_End_Position_1, duration: enemy_duration_1)
-        //let enemy_Move_V1 = SKAction.moveBy(CGVectorMake(0, 100), duration: 1)
-        //let enemy_Move_V2 = SKAction.moveBy(CGVectorMake(<#dx: CGFloat#>, <#dy: CGFloat#>)
-        
-        
-            //enemy2.runAction(enemy_Move_V1)
-        
-//        let enemy_End_Position_2 = CGPoint(x: position1.x, y: position1.y)
-//        let enemy_duration_2 = NSTimeInterval(3.0)
-//        let enemy_Move_2 = SKAction.moveTo(enemy_End_Position_2, duration: enemy_duration_2)
-        
-//        enemy2.runAction(SKAction.sequence([enemy_Move_1,enemy_Move_2]))
-        
-        
-//        var startPositionY = enemy2.position.y
-//        let enemy_End_Position_1 = CGFloat(startPositionY - 300)
-//        let enemy_duration_1 = NSTimeInterval(3.0)
-//        let enemy_Move_1 = SKAction.moveTo(CGPointMake(enemy2.position.x,startPositionY - 300), duration: enemy_duration_1)
-//        println(startPositionY - 300)
-        //let enemy_Move_1 = SKAction.moveToY(enemy_End_Position_1, duration:enemy_duration_1)
-        
-        
-//        let enemy_End_Position_2 = CGFloat(startPositionY)
-//        let enemy_duration_2 = NSTimeInterval(3.0)
-//        let enemy_Move_2 = SKAction.moveTo(CGPointMake(enemy2.position.x,700), duration: enemy_duration_1)
-//        println(startPositionY)
-//        let enemy_Move_2 = SKAction.moveToY(enemy_End_Position_2, duration:enemy_duration_2)
+  
+    }
     
-
-        //let enemy_Move_Done = SKAction.removeFromParent()
+    func createEnemy2(position1:CGPoint){
         
-
-//        enemy2.runAction(SKAction.sequence([enemy_Move_1,enemy_Move_2]))
-    //$var action1 = enemy2.runAction(enemy_Move_1)
+        let enemy2: SKSpriteNode = SKSpriteNode(imageNamed: "enemy")
+        enemy2.userData = NSMutableDictionary()
         
-//        var myIndex = enemy2.userData?.valueForKey("index")!
-//        var indexValue = myIndex! as Int
-//        active_Enemy.removeAtIndex(indexValue)
-//        var i = 0
-//        for item in active_Enemy{
-//            item.userData!.setValue(Int(i), forKey: "index")
-//        }
-
-
-
+        enemy2.userData!.setValue(Int(30), forKey: "health")
+        var enemy_count = active_Enemy.count
+        enemy2.userData!.setValue(Int(enemy_count), forKey: "index")
+        enemy2.userData!.setValue(Int(1), forKey: "type")
+        
+        enemy2.setScale(CGFloat(1))
+        enemy2.physicsBody = SKPhysicsBody(rectangleOfSize: enemy2.size)
+        enemy2.physicsBody?.dynamic = true
+        enemy2.physicsBody?.categoryBitMask = enemyCategory
+        enemy2.physicsBody?.contactTestBitMask = bulletCategory
+        enemy2.physicsBody?.collisionBitMask = 0
+        
+        
+        enemy2.position = position1
+        active_Enemy.append(enemy2)
+        self.addChild(enemy2)
+        let speed = Float(1.5)
+        
+        let enemy_End_Positon_1 = CGPoint(x: position1.x - 200, y: position1.y)
+        let enemy_duration_1 = NSTimeInterval(speed)
+        let enemy_Move_1 = SKAction.moveTo(enemy_End_Positon_1, duration: enemy_duration_1)
+        
+        let enemy_End_Positon_2 = CGPoint(x: position1.x, y: position1.y)
+        let enemy_duration_2 = NSTimeInterval(speed)
+        let enemy_Move_2 = SKAction.moveTo(enemy_End_Positon_2, duration: enemy_duration_2)
+        
+        enemy2.runAction(SKAction.repeatAction(SKAction.sequence([enemy_Move_1,enemy_Move_2]), count: 100))
         
     }
-
-    class enemy{
-        var health: Int
-        init (healthInit: Int){
-            health = healthInit
-    }
-
-//    func createEnemy2(position1:CGPoint){
-//        let enemy: SKSpriteNode = SKSpriteNode(imageNamed: "enemy")
-//        enemy.setScale(CGFloat(1))
-//        self.addChild(enemy)
-//        enemy.position = position1
-//
-//        let enemy_End_Position_1 = CGPoint(x: enemy.position.x-512, y: enemy.position.y-75)
-//        let enemy_duration_1 = NSTimeInterval(1.5)
-//        let enemy_Move_1 = SKAction.moveTo(enemy_End_Position_1, duration: enemy_duration_1)
-//        
-//        let enemy_End_Position_2 = CGPoint(x: enemy.position.x-300, y: enemy.position.y-20)
-//        let enemy_duration_2 = NSTimeInterval(2)
-//        let enemy_Move_2 = SKAction.moveTo(enemy_End_Position_2, duration: enemy_duration_2)
-//        
-//        let enemy_End_Position_3 = CGPoint(x: enemy.position.x-1024, y: enemy.position.y)
-//        let enemy_duration_3 = NSTimeInterval(2.5)
-//        let enemy_Move_3 = SKAction.moveTo(enemy_End_Position_3, duration: enemy_duration_3)
-//
-//
-//        
-//        let enemy_Move_Done = SKAction.removeFromParent()
-//
-//        enemy.runAction(SKAction.sequence([enemy_Move_1,enemy_Move_2,enemy_Move_3,enemy_Move_Done]))
-//
-//
-//    }
-    }
+    
+    
     func enemy_One_Spawn_Bullets(enemyPosition: CGPoint){
         var actionArray: [SKAction] = []
         for i in 0...7{
@@ -393,53 +383,53 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(enemy_bullet)
             
             var dist = Int(700)
-            
+            var enemy_bullet_Duration = NSTimeInterval(3)
             switch i{
+            
             case 0:
                 var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x - 700,y:enemy_bullet.position.y)
-                var enemy_bullet_Duration = NSTimeInterval(3)
                 var enemy_bullet_Move = SKAction.moveTo(enemy_bullet_End_Position, duration: enemy_bullet_Duration)
                 actionArray.append(enemy_bullet_Move)
                 break
             case 1:
                 var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x + 700,y:enemy_bullet.position.y)
-                var enemy_bullet_Duration = NSTimeInterval(3)
+                //var enemy_bullet_Duration = NSTimeInterval(3)
                 var enemy_bullet_Move = SKAction.moveTo(enemy_bullet_End_Position, duration: enemy_bullet_Duration)
                 actionArray.append(enemy_bullet_Move)
                 break
             case 2:
                 var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x,y:enemy_bullet.position.y - 700)
-                var enemy_bullet_Duration = NSTimeInterval(3)
+                //var enemy_bullet_Duration = NSTimeInterval(3)
                 var enemy_bullet_Move = SKAction.moveTo(enemy_bullet_End_Position, duration: enemy_bullet_Duration)
                 actionArray.append(enemy_bullet_Move)
                 break
             case 3:
                 var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x,y:enemy_bullet.position.y + 700)
-                var enemy_bullet_Duration = NSTimeInterval(3)
+                //var enemy_bullet_Duration = NSTimeInterval(3)
                 var enemy_bullet_Move = SKAction.moveTo(enemy_bullet_End_Position, duration: enemy_bullet_Duration)
                 actionArray.append(enemy_bullet_Move)
                 break
             case 4:
                 var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x - 495,y:enemy_bullet.position.y - 495)
-                var enemy_bullet_Duration = NSTimeInterval(3)
+                //var enemy_bullet_Duration = NSTimeInterval(3)
                 var enemy_bullet_Move = SKAction.moveTo(enemy_bullet_End_Position, duration: enemy_bullet_Duration)
                 actionArray.append(enemy_bullet_Move)
                 break
             case 5:
                 var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x - 495,y:enemy_bullet.position.y + 495)
-                var enemy_bullet_Duration = NSTimeInterval(3)
+                //var enemy_bullet_Duration = NSTimeInterval(3)
                 var enemy_bullet_Move = SKAction.moveTo(enemy_bullet_End_Position, duration: enemy_bullet_Duration)
                 actionArray.append(enemy_bullet_Move)
                 break
             case 6:
                 var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x + 495,y:enemy_bullet.position.y - 495)
-                var enemy_bullet_Duration = NSTimeInterval(3)
+                //var enemy_bullet_Duration = NSTimeInterval(3)
                 var enemy_bullet_Move = SKAction.moveTo(enemy_bullet_End_Position, duration: enemy_bullet_Duration)
                 actionArray.append(enemy_bullet_Move)
                 break
             case 7:
                 var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x + 495,y:enemy_bullet.position.y + 495)
-                var enemy_bullet_Duration = NSTimeInterval(3)
+                //var enemy_bullet_Duration = NSTimeInterval(3)
                 var enemy_bullet_Move = SKAction.moveTo(enemy_bullet_End_Position, duration: enemy_bullet_Duration)
                 actionArray.append(enemy_bullet_Move)
                 break
@@ -448,6 +438,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             enemy_bullet.runAction(SKAction.group(actionArray))
         }
+        let bullet_Move_Done = SKAction.removeFromParent()
+        actionArray.append(bullet_Move_Done)
     }
     
     var enemy_One_Last_Update = NSTimeInterval(0)
@@ -459,6 +451,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var time_Until_Hittable = NSTimeInterval(2)
     
     override func update(currentTime: CFTimeInterval) {
+        
+        if(!levelList.isEmpty && active_Enemy.isEmpty){
+            spawnEnemies()
+        }
         
         let delta_Enemy_One = currentTime - enemy_One_Last_Update
         let last_Damaged_Player = currentTime - player_Hit_Last_Update
@@ -502,7 +498,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }else if bulletFired == 3{
             bulletFired = 4
         }else{
-            fireGun()
+            fireGun1()
+            fireGun2()
+            fireGun3()
             
             bulletFired = 1
         }
