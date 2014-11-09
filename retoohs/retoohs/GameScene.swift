@@ -131,6 +131,8 @@ class GameScene: SKScene {
             bulletFired = 2
         }else if bulletFired == 2{
             bulletFired = 3
+        }else if bulletFired == 3{
+            bulletFired = 4
         }else{
             fireGun()
             bulletFired = 1
