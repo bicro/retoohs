@@ -198,22 +198,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        addChild(enemy1.sprite)
         
 //
-//        let enemy2: SKSpriteNode = SKSpriteNode(imageNamed: "enemy")
-//        enemy2.userData = NSMutableDictionary()
-//        
-//        enemy2.userData!.setValue(Int(20), forKey: "health")
-//
-//        enemy2.setScale(CGFloat(1))
-//        enemy2.physicsBody = SKPhysicsBody(rectangleOfSize: enemy2.size)
-//        enemy2.physicsBody?.dynamic = true
-//        enemy2.physicsBody?.categoryBitMask = enemyCategory
-//        enemy2.physicsBody?.contactTestBitMask = bulletCategory
-//        enemy2.physicsBody?.collisionBitMask = 0
-//        
-//        
-//        enemy2.position = position1
-//
-//        self.addChild(enemy2)
+        let enemy2: SKSpriteNode = SKSpriteNode(imageNamed: "enemy")
+        enemy2.userData = NSMutableDictionary()
+        
+        enemy2.userData!.setValue(Int(20), forKey: "health")
+
+        enemy2.setScale(CGFloat(1))
+        enemy2.physicsBody = SKPhysicsBody(rectangleOfSize: enemy2.size)
+        enemy2.physicsBody?.dynamic = true
+        enemy2.physicsBody?.categoryBitMask = enemyCategory
+        enemy2.physicsBody?.contactTestBitMask = bulletCategory
+        enemy2.physicsBody?.collisionBitMask = 0
+        
+        
+        enemy2.position = position1
+
+        self.addChild(enemy2)
 //        let enemy_End_Position_1 = CGFloat(enemy.position.y - 600)
 //        let enemy_duration_1 = NSTimeInterval(1.0)
 //        let enemy_Move_1 = SKAction.moveToY(enemy_End_Position_1, duration:enemy_duration_1)
