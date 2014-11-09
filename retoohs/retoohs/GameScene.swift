@@ -59,13 +59,17 @@ class GameScene: SKScene {
         
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"player")
-            
-            sprite.position = location
+            if(location.x < self.size.width/2){
+                println("RIGHTSIDE")
+                let v:CGVector = CGVectorMake(30,30)
+                let moveAction: SKAction = SKAction.moveBy(v, duration: 3.0)
+                if let action = moveAction as SKAction?{
+                    player.runAction(action)
+                }
+            }else{
+                println("LEFTSIDE")
+            }
 
-            
-            self.addChild(sprite)
         }
     }
    
