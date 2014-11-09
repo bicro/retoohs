@@ -18,11 +18,11 @@ class GameScene: SKScene {
     
     
     //background
-    let myBackground: SKSpriteNode!
-    let bgNode: SKSpriteNode!
+    let myBackground: SKSpriteNode = SKSpriteNode(imageNamed: "background1")
+    let bgNode: SKSpriteNode = SKSpriteNode(imageNamed: "cheerio")
     
     //player
-    let player: SKSpriteNode!
+    let player: SKSpriteNode = SKSpriteNode(imageNamed: "player")
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -38,17 +38,14 @@ class GameScene: SKScene {
         
         
         //draw background
-        let myBackground = SKSpriteNode(imageNamed: "background1")
         myBackground.position = CGPointMake(self.size.width/2, self.size.height/2)
         self.addChild(myBackground)
         
         //draw background nodes
-        let bgnode = SKSpriteNode(imageNamed: "cheerio")
         bgnode.position = CGPointMake(self.size.width/2, self.size.height/2)
         self.addChild(bgnode)
         
         //draw player
-        let player = SKSpriteNode(imageNamed: "player")
         player.position = CGPointMake(self.size.width/2, 40)
         self.addChild(player)
         
@@ -77,10 +74,14 @@ class GameScene: SKScene {
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         let touch = (touches.anyObject() as UITouch).locationInView(self.view!.superview)
         let prev_touch = (touches.anyObject() as UITouch).previousLocationInView(self.view!.superview)
-        println(touch)
-        println("prev")
-        println(prev_touch)
-        println("END")
+        currx = touch.x
+        curry = touch.y
+        prevx = prev_touch.x
+        prevy = prev_touch.y
+        
+        x = currx - prevx
+        y = curry - prevy
+        
 
     }
     
