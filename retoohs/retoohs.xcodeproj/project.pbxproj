@@ -18,6 +18,8 @@
 		F9CA39E81A0F3B8900C254C6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9CA39E61A0F3B8900C254C6 /* LaunchScreen.xib */; };
 		F9CA39F41A0F3B8900C254C6 /* retoohsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CA39F31A0F3B8900C254C6 /* retoohsTests.swift */; };
 		F9CA39FE1A0F47BF00C254C6 /* bgmusic.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F9CA39FD1A0F47BF00C254C6 /* bgmusic.m4a */; };
+		F9D671421A1026F000EF4164 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D671411A1026F000EF4164 /* StartScene.swift */; };
+		F9D671441A10278D00EF4164 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D671431A10278D00EF4164 /* StartScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		F9CA39F21A0F3B8900C254C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9CA39F31A0F3B8900C254C6 /* retoohsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = retoohsTests.swift; sourceTree = "<group>"; };
 		F9CA39FD1A0F47BF00C254C6 /* bgmusic.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bgmusic.m4a; sourceTree = "<group>"; };
+		F9D671411A1026F000EF4164 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
+		F9D671431A10278D00EF4164 /* StartScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,11 +97,13 @@
 				F9CA39D91A0F3B8900C254C6 /* AppDelegate.swift */,
 				F9CA39DB1A0F3B8900C254C6 /* GameScene.sks */,
 				F9CA39DD1A0F3B8900C254C6 /* GameScene.swift */,
+				F9D671411A1026F000EF4164 /* StartScene.swift */,
 				F9CA39DF1A0F3B8900C254C6 /* GameViewController.swift */,
 				F9CA39E11A0F3B8900C254C6 /* Main.storyboard */,
 				F9CA39E41A0F3B8900C254C6 /* Images.xcassets */,
 				F9CA39E61A0F3B8900C254C6 /* LaunchScreen.xib */,
 				F9CA39D71A0F3B8900C254C6 /* Supporting Files */,
+				F9D671431A10278D00EF4164 /* StartScreen.swift */,
 			);
 			path = retoohs;
 			sourceTree = "<group>";
@@ -233,7 +239,9 @@
 			files = (
 				F9CA39DE1A0F3B8900C254C6 /* GameScene.swift in Sources */,
 				F9CA39E01A0F3B8900C254C6 /* GameViewController.swift in Sources */,
+				F9D671441A10278D00EF4164 /* StartScreen.swift in Sources */,
 				F9CA39DA1A0F3B8900C254C6 /* AppDelegate.swift in Sources */,
+				F9D671421A1026F000EF4164 /* StartScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
