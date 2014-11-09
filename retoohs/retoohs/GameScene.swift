@@ -42,8 +42,8 @@ class GameScene: SKScene {
         self.addChild(myBackground)
         
         //draw background nodes
-        bgnode.position = CGPointMake(self.size.width/2, self.size.height/2)
-        self.addChild(bgnode)
+        bgNode.position = CGPointMake(self.size.width/2, self.size.height/2)
+        self.addChild(bgNode)
         
         //draw player
         player.position = CGPointMake(self.size.width/2, 40)
@@ -72,16 +72,18 @@ class GameScene: SKScene {
     
     }
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        let touch = (touches.anyObject() as UITouch).locationInView(self.view!.superview)
-        let prev_touch = (touches.anyObject() as UITouch).previousLocationInView(self.view!.superview)
-        currx = touch.x
-        curry = touch.y
-        prevx = prev_touch.x
-        prevy = prev_touch.y
+        var touch = (touches.anyObject() as UITouch).locationInView(self.view!.superview)
+        var prev_touch = (touches.anyObject() as UITouch).previousLocationInView(self.view!.superview)
+        var currx = touch.x
+        var curry = touch.y
+        var prevx = prev_touch.x
+        var prevy = prev_touch.y
         
-        x = currx - prevx
-        y = curry - prevy
+        var x = currx - prevx
+        var y = curry - prevy
         
+        self.player.position.x += x
+        self.player.position.y -= y
 
     }
     
