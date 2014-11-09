@@ -81,9 +81,33 @@ class GameScene: SKScene {
         
         var x = currx - prevx
         var y = curry - prevy
+        var playerX = self.player.position.x
+        var playerY = self.player.position.y
+
+        if ((playerX + x) < self.size.width - 330) && ((playerX + x) > 330){
+            self.player.position.x += x
+        }
+        if ((playerY - y) < self.size.height - 100) && ((playerY - y) > 30){
+            self.player.position.y -= y
+        }
+
         
-        self.player.position.x += x
-        self.player.position.y -= y
+        
+//        if playerX > self.size.width - 350{
+//            self.player.position.x = self.size.width - 350
+//        }
+//        if playerX < 350{
+//            self.player.position.x = 350
+//        }
+//        if playerY > self.size.height{
+//            self.player.position.y = self.size.height - 100
+//        }
+//        if playerY < 100{
+//            self.player.position.y = 100
+//        }
+
+        
+        
 
     }
     
