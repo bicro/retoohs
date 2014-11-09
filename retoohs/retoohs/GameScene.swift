@@ -63,7 +63,7 @@ class GameScene: SKScene {
         //draw player
         player.position = CGPointMake(self.size.width/2, 40)
         self.addChild(player)
-        createEnemy1(CGPointMake(500, 800))
+        createEnemy2(CGPointMake(1024, 500))
 
         
     }
@@ -152,6 +152,33 @@ class GameScene: SKScene {
         let enemy_Move_Done = SKAction.removeFromParent()
 
         enemy.runAction(SKAction.sequence([enemy_Move_1,enemy_Move_2,enemy_Move_Done]))
+
+        
+    }
+
+    func createEnemy2(position1:CGPoint){
+        let enemy: SKSpriteNode = SKSpriteNode(imageNamed: "enemy")
+        enemy.setScale(CGFloat(1))
+        self.addChild(enemy)
+        enemy.position = position1
+
+        let enemy_End_Position_1 = CGPoint(x: enemy.position.x-512, y: enemy.position.y-75)
+        let enemy_duration_1 = NSTimeInterval(1.5)
+        let enemy_Move_1 = SKAction.moveTo(enemy_End_Position_1, duration: enemy_duration_1)
+        
+        let enemy_End_Position_2 = CGPoint(x: enemy.position.x-300, y: enemy.position.y-20)
+        let enemy_duration_2 = NSTimeInterval(2)
+        let enemy_Move_2 = SKAction.moveTo(enemy_End_Position_2, duration: enemy_duration_2)
+        
+        let enemy_End_Position_3 = CGPoint(x: enemy.position.x-1024, y: enemy.position.y)
+        let enemy_duration_3 = NSTimeInterval(2.5)
+        let enemy_Move_3 = SKAction.moveTo(enemy_End_Position_3, duration: enemy_duration_3)
+
+
+        
+        let enemy_Move_Done = SKAction.removeFromParent()
+
+        enemy.runAction(SKAction.sequence([enemy_Move_1,enemy_Move_2,enemy_Move_3,enemy_Move_Done]))
 
 
 
