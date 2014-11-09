@@ -56,22 +56,34 @@ class GameScene: SKScene {
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
+        let touch = touches.anyObject() as UITouch
         
-        for touch: AnyObject in touches {
-            let location = touch.locationInNode(self)
-            if(location.x < self.size.width/2){
-                println("RIGHTSIDE")
-                let v:CGVector = CGVectorMake(30,30)
-                let moveAction: SKAction = SKAction.moveBy(v, duration: 3.0)
-                if let action = moveAction as SKAction?{
-                    player.runAction(action)
-                }
-            }else{
-                println("LEFTSIDE")
-            }
-
-        }
+//        for touch: AnyObject in touches {
+//            let location = touch.locationInNode(self)
+//            if(location.x < self.size.width/2){
+//                println("RIGHTSIDE")
+////                let v:CGVector = CGVectorMake(30,30)
+////                let moveAction: SKAction = SKAction.moveBy(v, duration: 3.0)
+////                if let action = moveAction as SKAction?{
+////                    player.runAction(action)
+//                }
+//            }else{
+//                println("LEFTSIDE")
+//            }
+//
+//        }
+    
     }
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+        let touch = (touches.anyObject() as UITouch).locationInView(self.view!.superview)
+        let prev_touch = (touches.anyObject() as UITouch).previousLocationInView(self.view!.superview)
+        println(touch)
+        println("prev")
+        println(prev_touch)
+        println("END")
+
+    }
+    
    
     
     
