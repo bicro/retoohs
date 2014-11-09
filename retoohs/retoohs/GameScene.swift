@@ -15,6 +15,7 @@ class GameScene: SKScene {
     
     //background music
     var musicPlayer: AVAudioPlayer!
+    var bulletFired = 1
     
     
     //background
@@ -23,6 +24,10 @@ class GameScene: SKScene {
     
     //player
     let player: SKSpriteNode = SKSpriteNode(imageNamed: "player")
+
+
+
+
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -35,7 +40,7 @@ class GameScene: SKScene {
         musicPlayer.prepareToPlay()
         musicPlayer.play()
         
-        
+        //self.addChild(enemy)
         
         //draw background
         myBackground.position = CGPointMake(self.size.width/2, self.size.height/2)
@@ -49,12 +54,12 @@ class GameScene: SKScene {
         player.position = CGPointMake(self.size.width/2, 40)
         self.addChild(player)
         
+        
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
         let touch = touches.anyObject() as UITouch
-        
 //        for touch: AnyObject in touches {
 //            let location = touch.locationInNode(self)
 //            if(location.x < self.size.width/2){
@@ -90,34 +95,15 @@ class GameScene: SKScene {
         if ((playerY - y) < self.size.height - 100) && ((playerY - y) > 30){
             self.player.position.y -= y
         }
-        
-
-        
-        
-//        if playerX > self.size.width - 350{
-//            self.player.position.x = self.size.width - 350
-//        }
-//        if playerX < 350{
-//            self.player.position.x = 350
-//        }
-//        if playerY > self.size.height{
-//            self.player.position.y = self.size.height - 100
-//        }
-//        if playerY < 100{
-//            self.player.position.y = 100
-//        }
-
-        
-        
-
+    
     }
     func fireGun(){
         let bullet: SKSpriteNode = SKSpriteNode(imageNamed: "missile")
         bullet.setScale(CGFloat(0.3))
-        addChild(bullet)
+        self.addChild(bullet)
         bullet.position = self.player.position
         let bullet_End_Position = CGFloat(bullet.position.y + 750)
-        let bullet_Duration = NSTimeInterval(0.7)
+        let bullet_Duration = NSTimeInterval(0.8)
         
         let bullet_Move = SKAction.moveToY(bullet_End_Position, duration: bullet_Duration)
         if bullet.position.y < self.size.width - 270 {
@@ -131,10 +117,28 @@ class GameScene: SKScene {
     
     
     override func update(currentTime: CFTimeInterval) {
-        fireGun()
+        if bulletFired == 1{
+            bulletFired = 2
+        }else if bulletFired == 2{
+            bulletFired = 3
+        }else{
+            fireGun()
+            bulletFired = 1
+        }
+
+       
         /* Called before each frame is rendered */
         //player.update
         //enemy.update
         //background.update
     }
+    
 }
+
+class enemy {
+    let enemy1: SKSpriteNode = SKSpriteNode(imageNamed: "Spaceship")
+    func init_enemy(){
+        enemy1.position = CGPointMake(500, 500)
+    }
+}
+
