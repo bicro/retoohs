@@ -33,6 +33,7 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        //create enemy
         
         //setup particles
         myParticle.particlePosition = CGPointMake(512, 760);
@@ -55,15 +56,12 @@ class GameScene: SKScene {
         //draw background
         myBackground.position = CGPointMake(self.size.width/2, self.size.height/2)
         self.addChild(myBackground)
-        
-        //draw background nodes
-        bgNode.position = CGPointMake(self.size.width/2, self.size.height/2)
-        self.addChild(bgNode)
+
         
         //draw player
         player.position = CGPointMake(self.size.width/2, 40)
         self.addChild(player)
-        
+
         
     }
     
@@ -105,6 +103,7 @@ class GameScene: SKScene {
         if ((playerY - y) < self.size.height - 100) && ((playerY - y) > 30){
             self.player.position.y -= y
         }
+        
     
     }
     func fireGun(){
@@ -123,7 +122,20 @@ class GameScene: SKScene {
         
     }
     
-   
+    func createEnemy1(position:CGPoint){
+        let enemy: SKSpriteNode = SKSpriteNode(imageNamed: "enemy")
+        enemy.setScale(CGFloat(1))
+        self.addChild(enemy)
+        enemy.position = self.player.position
+//        let bullet_End_Position = CGFloat(bullet.position.y + 750)
+//        let bullet_Duration = NSTimeInterval(0.8)
+//        
+//        let bullet_Move = SKAction.moveToY(bullet_End_Position, duration: bullet_Duration)
+//        if bullet.position.y < self.size.width - 270 {
+//            let bullet_Move_Done = SKAction.removeFromParent()
+//            bullet.runAction(SKAction.sequence([bullet_Move, bullet_Move_Done]))
+//        }
+    }
     
     
     override func update(currentTime: CFTimeInterval) {
@@ -139,18 +151,19 @@ class GameScene: SKScene {
         }
 
        
-        /* Called before each frame is rendered */
-        //player.update
-        //enemy.update
-        //background.update
+        
+
     }
     
 }
 
-class enemy {
-    let enemy1: SKSpriteNode = SKSpriteNode(imageNamed: "Spaceship")
-    func init_enemy(){
-        enemy1.position = CGPointMake(500, 500)
-    }
-}
+
+
+//class enemy {
+//    let enemy1: SKSpriteNode = SKSpriteNode(imageNamed: "Spaceship")
+//    func init_enemy(){
+//        enemy1.position = CGPointMake(500, 500)
+//        
+//    }
+//}
 
