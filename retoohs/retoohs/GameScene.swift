@@ -60,10 +60,8 @@ class GameScene: SKScene {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
+            let sprite = SKSpriteNode(imageNamed:"player")
             
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
             sprite.position = location
 
             
