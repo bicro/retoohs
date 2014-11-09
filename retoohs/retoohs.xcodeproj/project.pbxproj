@@ -1,0 +1,432 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F9CA39DA1A0F3B8900C254C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CA39D91A0F3B8900C254C6 /* AppDelegate.swift */; };
+		F9CA39DC1A0F3B8900C254C6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F9CA39DB1A0F3B8900C254C6 /* GameScene.sks */; };
+		F9CA39DE1A0F3B8900C254C6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CA39DD1A0F3B8900C254C6 /* GameScene.swift */; };
+		F9CA39E01A0F3B8900C254C6 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CA39DF1A0F3B8900C254C6 /* GameViewController.swift */; };
+		F9CA39E31A0F3B8900C254C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9CA39E11A0F3B8900C254C6 /* Main.storyboard */; };
+		F9CA39E51A0F3B8900C254C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9CA39E41A0F3B8900C254C6 /* Images.xcassets */; };
+		F9CA39E81A0F3B8900C254C6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9CA39E61A0F3B8900C254C6 /* LaunchScreen.xib */; };
+		F9CA39F41A0F3B8900C254C6 /* retoohsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CA39F31A0F3B8900C254C6 /* retoohsTests.swift */; };
+		F9CA39FE1A0F47BF00C254C6 /* bgmusic.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F9CA39FD1A0F47BF00C254C6 /* bgmusic.m4a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F9CA39EE1A0F3B8900C254C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9CA39CC1A0F3B8900C254C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9CA39D31A0F3B8900C254C6;
+			remoteInfo = retoohs;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F9CA39D41A0F3B8900C254C6 /* retoohs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = retoohs.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9CA39D81A0F3B8900C254C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9CA39D91A0F3B8900C254C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F9CA39DB1A0F3B8900C254C6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		F9CA39DD1A0F3B8900C254C6 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		F9CA39DF1A0F3B8900C254C6 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		F9CA39E21A0F3B8900C254C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F9CA39E41A0F3B8900C254C6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F9CA39E71A0F3B8900C254C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F9CA39ED1A0F3B8900C254C6 /* retoohsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = retoohsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9CA39F21A0F3B8900C254C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9CA39F31A0F3B8900C254C6 /* retoohsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = retoohsTests.swift; sourceTree = "<group>"; };
+		F9CA39FD1A0F47BF00C254C6 /* bgmusic.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bgmusic.m4a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F9CA39D11A0F3B8900C254C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9CA39EA1A0F3B8900C254C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F9CA39CB1A0F3B8900C254C6 = {
+			isa = PBXGroup;
+			children = (
+				F9CA39D61A0F3B8900C254C6 /* retoohs */,
+				F9CA39F01A0F3B8900C254C6 /* retoohsTests */,
+				F9CA39D51A0F3B8900C254C6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F9CA39D51A0F3B8900C254C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F9CA39D41A0F3B8900C254C6 /* retoohs.app */,
+				F9CA39ED1A0F3B8900C254C6 /* retoohsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F9CA39D61A0F3B8900C254C6 /* retoohs */ = {
+			isa = PBXGroup;
+			children = (
+				F9CA39FD1A0F47BF00C254C6 /* bgmusic.m4a */,
+				F9CA39D91A0F3B8900C254C6 /* AppDelegate.swift */,
+				F9CA39DB1A0F3B8900C254C6 /* GameScene.sks */,
+				F9CA39DD1A0F3B8900C254C6 /* GameScene.swift */,
+				F9CA39DF1A0F3B8900C254C6 /* GameViewController.swift */,
+				F9CA39E11A0F3B8900C254C6 /* Main.storyboard */,
+				F9CA39E41A0F3B8900C254C6 /* Images.xcassets */,
+				F9CA39E61A0F3B8900C254C6 /* LaunchScreen.xib */,
+				F9CA39D71A0F3B8900C254C6 /* Supporting Files */,
+			);
+			path = retoohs;
+			sourceTree = "<group>";
+		};
+		F9CA39D71A0F3B8900C254C6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F9CA39D81A0F3B8900C254C6 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F9CA39F01A0F3B8900C254C6 /* retoohsTests */ = {
+			isa = PBXGroup;
+			children = (
+				F9CA39F31A0F3B8900C254C6 /* retoohsTests.swift */,
+				F9CA39F11A0F3B8900C254C6 /* Supporting Files */,
+			);
+			path = retoohsTests;
+			sourceTree = "<group>";
+		};
+		F9CA39F11A0F3B8900C254C6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F9CA39F21A0F3B8900C254C6 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F9CA39D31A0F3B8900C254C6 /* retoohs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9CA39F71A0F3B8900C254C6 /* Build configuration list for PBXNativeTarget "retoohs" */;
+			buildPhases = (
+				F9CA39D01A0F3B8900C254C6 /* Sources */,
+				F9CA39D11A0F3B8900C254C6 /* Frameworks */,
+				F9CA39D21A0F3B8900C254C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = retoohs;
+			productName = retoohs;
+			productReference = F9CA39D41A0F3B8900C254C6 /* retoohs.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F9CA39EC1A0F3B8900C254C6 /* retoohsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9CA39FA1A0F3B8900C254C6 /* Build configuration list for PBXNativeTarget "retoohsTests" */;
+			buildPhases = (
+				F9CA39E91A0F3B8900C254C6 /* Sources */,
+				F9CA39EA1A0F3B8900C254C6 /* Frameworks */,
+				F9CA39EB1A0F3B8900C254C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F9CA39EF1A0F3B8900C254C6 /* PBXTargetDependency */,
+			);
+			name = retoohsTests;
+			productName = retoohsTests;
+			productReference = F9CA39ED1A0F3B8900C254C6 /* retoohsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F9CA39CC1A0F3B8900C254C6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = AlexRohit;
+				TargetAttributes = {
+					F9CA39D31A0F3B8900C254C6 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					F9CA39EC1A0F3B8900C254C6 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = F9CA39D31A0F3B8900C254C6;
+					};
+				};
+			};
+			buildConfigurationList = F9CA39CF1A0F3B8900C254C6 /* Build configuration list for PBXProject "retoohs" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F9CA39CB1A0F3B8900C254C6;
+			productRefGroup = F9CA39D51A0F3B8900C254C6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F9CA39D31A0F3B8900C254C6 /* retoohs */,
+				F9CA39EC1A0F3B8900C254C6 /* retoohsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F9CA39D21A0F3B8900C254C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9CA39E81A0F3B8900C254C6 /* LaunchScreen.xib in Resources */,
+				F9CA39E51A0F3B8900C254C6 /* Images.xcassets in Resources */,
+				F9CA39DC1A0F3B8900C254C6 /* GameScene.sks in Resources */,
+				F9CA39E31A0F3B8900C254C6 /* Main.storyboard in Resources */,
+				F9CA39FE1A0F47BF00C254C6 /* bgmusic.m4a in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9CA39EB1A0F3B8900C254C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F9CA39D01A0F3B8900C254C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9CA39DE1A0F3B8900C254C6 /* GameScene.swift in Sources */,
+				F9CA39E01A0F3B8900C254C6 /* GameViewController.swift in Sources */,
+				F9CA39DA1A0F3B8900C254C6 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9CA39E91A0F3B8900C254C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9CA39F41A0F3B8900C254C6 /* retoohsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F9CA39EF1A0F3B8900C254C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F9CA39D31A0F3B8900C254C6 /* retoohs */;
+			targetProxy = F9CA39EE1A0F3B8900C254C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F9CA39E11A0F3B8900C254C6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F9CA39E21A0F3B8900C254C6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F9CA39E61A0F3B8900C254C6 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F9CA39E71A0F3B8900C254C6 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F9CA39F51A0F3B8900C254C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F9CA39F61A0F3B8900C254C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F9CA39F81A0F3B8900C254C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = retoohs/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F9CA39F91A0F3B8900C254C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = retoohs/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F9CA39FB1A0F3B8900C254C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = retoohsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/retoohs.app/retoohs";
+			};
+			name = Debug;
+		};
+		F9CA39FC1A0F3B8900C254C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = retoohsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/retoohs.app/retoohs";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F9CA39CF1A0F3B8900C254C6 /* Build configuration list for PBXProject "retoohs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9CA39F51A0F3B8900C254C6 /* Debug */,
+				F9CA39F61A0F3B8900C254C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9CA39F71A0F3B8900C254C6 /* Build configuration list for PBXNativeTarget "retoohs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9CA39F81A0F3B8900C254C6 /* Debug */,
+				F9CA39F91A0F3B8900C254C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F9CA39FA1A0F3B8900C254C6 /* Build configuration list for PBXNativeTarget "retoohsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9CA39FB1A0F3B8900C254C6 /* Debug */,
+				F9CA39FC1A0F3B8900C254C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F9CA39CC1A0F3B8900C254C6 /* Project object */;
+}
