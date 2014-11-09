@@ -27,6 +27,8 @@ class GameScene: SKScene {
     
     //particle
     let myParticle: SKEmitterNode = SKEmitterNode(fileNamed: "MyParticle")
+    private let bulletCategory: UInt32 = 0x1 << 0
+    private let enemyCategory: UInt32 = 0x1 << 1
 
 
 
@@ -61,6 +63,7 @@ class GameScene: SKScene {
         //draw player
         player.position = CGPointMake(self.size.width/2, 40)
         self.addChild(player)
+        createEnemy1(CGPointMake(500, 800))
 
         
     }
@@ -109,8 +112,17 @@ class GameScene: SKScene {
     func fireGun(){
         let bullet: SKSpriteNode = SKSpriteNode(imageNamed: "missile")
         bullet.setScale(CGFloat(0.3))
-        self.addChild(bullet)
+        
+        bullet.physicsBody = SKPhysicsBody(circleOfRadius: bullet.size.width/2)
+        bullet.physicsBody?.dynamic = true
+        bullet.physicsBody?.categoryBitMask = bulletCategory
+        bullet.physicsBody?.contactTestBitMask = enemyCategory
+        bullet.physicsBody?.collisionBitMask = 0
+        bullet.physicsBody?.usesPreciseCollisionDetection = true
+
+        
         bullet.position = self.player.position
+        self.addChild(bullet)
         let bullet_End_Position = CGFloat(bullet.position.y + 750)
         let bullet_Duration = NSTimeInterval(0.8)
         
@@ -122,19 +134,28 @@ class GameScene: SKScene {
         
     }
     
-    func createEnemy1(position:CGPoint){
+    func createEnemy1(position1:CGPoint){
         let enemy: SKSpriteNode = SKSpriteNode(imageNamed: "enemy")
         enemy.setScale(CGFloat(1))
         self.addChild(enemy)
-        enemy.position = self.player.position
-//        let bullet_End_Position = CGFloat(bullet.position.y + 750)
-//        let bullet_Duration = NSTimeInterval(0.8)
-//        
-//        let bullet_Move = SKAction.moveToY(bullet_End_Position, duration: bullet_Duration)
-//        if bullet.position.y < self.size.width - 270 {
-//            let bullet_Move_Done = SKAction.removeFromParent()
-//            bullet.runAction(SKAction.sequence([bullet_Move, bullet_Move_Done]))
-//        }
+        enemy.position = position1
+
+        let enemy_End_Position_1 = CGFloat(enemy.position.y - 600)
+        let enemy_duration_1 = NSTimeInterval(1.0)
+        let enemy_Move_1 = SKAction.moveToY(enemy_End_Position_1, duration:enemy_duration_1)
+        
+        
+        let enemy_End_Position_2 = CGFloat(enemy.position.y)
+        let enemy_duration_2 = NSTimeInterval(1.0)
+        let enemy_Move_2 = SKAction.moveToY(enemy_End_Position_2, duration:enemy_duration_2)
+
+        let enemy_Move_Done = SKAction.removeFromParent()
+
+        enemy.runAction(SKAction.sequence([enemy_Move_1,enemy_Move_2,enemy_Move_Done]))
+
+
+
+        
     }
     
     
