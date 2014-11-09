@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F97CD21B1A0F78A500F556F4 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = F97CD2191A0F78A500F556F4 /* spark.png */; };
+		F97CD21C1A0F78A500F556F4 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = F97CD21A1A0F78A500F556F4 /* MyParticle.sks */; };
 		F9CA39DA1A0F3B8900C254C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CA39D91A0F3B8900C254C6 /* AppDelegate.swift */; };
 		F9CA39DC1A0F3B8900C254C6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F9CA39DB1A0F3B8900C254C6 /* GameScene.sks */; };
 		F9CA39DE1A0F3B8900C254C6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CA39DD1A0F3B8900C254C6 /* GameScene.swift */; };
@@ -29,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F97CD2191A0F78A500F556F4 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		F97CD21A1A0F78A500F556F4 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		F9CA39D41A0F3B8900C254C6 /* retoohs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = retoohs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9CA39D81A0F3B8900C254C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9CA39D91A0F3B8900C254C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 		F9CA39D61A0F3B8900C254C6 /* retoohs */ = {
 			isa = PBXGroup;
 			children = (
+				F97CD2191A0F78A500F556F4 /* spark.png */,
+				F97CD21A1A0F78A500F556F4 /* MyParticle.sks */,
 				F9CA39FD1A0F47BF00C254C6 /* bgmusic.m4a */,
 				F9CA39D91A0F3B8900C254C6 /* AppDelegate.swift */,
 				F9CA39DB1A0F3B8900C254C6 /* GameScene.sks */,
@@ -202,8 +208,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9CA39E81A0F3B8900C254C6 /* LaunchScreen.xib in Resources */,
+				F97CD21B1A0F78A500F556F4 /* spark.png in Resources */,
 				F9CA39E51A0F3B8900C254C6 /* Images.xcassets in Resources */,
 				F9CA39DC1A0F3B8900C254C6 /* GameScene.sks in Resources */,
+				F97CD21C1A0F78A500F556F4 /* MyParticle.sks in Resources */,
 				F9CA39E31A0F3B8900C254C6 /* Main.storyboard in Resources */,
 				F9CA39FE1A0F47BF00C254C6 /* bgmusic.m4a in Resources */,
 			);
@@ -417,6 +425,7 @@
 				F9CA39F91A0F3B8900C254C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F9CA39FA1A0F3B8900C254C6 /* Build configuration list for PBXNativeTarget "retoohsTests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +434,7 @@
 				F9CA39FC1A0F3B8900C254C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -24,13 +24,23 @@ class GameScene: SKScene {
     
     //player
     let player: SKSpriteNode = SKSpriteNode(imageNamed: "player")
-
+    
+    //particle
+    let myParticle: SKEmitterNode = SKEmitterNode(fileNamed: "MyParticle")
 
 
 
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        
+        //setup particles
+        myParticle.particlePosition = CGPointMake(512, 760);
+        myParticle.particleBirthRate = 50;
+        
+        self.addChild(myParticle)
+        
+        
         
         //setup background music
         var e: NSError?
