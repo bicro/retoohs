@@ -34,8 +34,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var contactQueue = Array<SKPhysicsContact>()
     var active_Enemy: [SKSpriteNode] = []
+    var isHit = false
+    var levelList: [(type: Int, position: CGPoint)] = []
+
     
    
+    
 
 
 
@@ -68,12 +72,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         
         //draw player
+        
         player.position = CGPointMake(self.size.width/2, 40)
+        
+        
+        player.userData = NSMutableDictionary()
+        
+        player.userData!.setValue(Int(3), forKey: "health")
+
+        
+        player.setScale(CGFloat(1))
+        player.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(player.size.width/4))
+        player.physicsBody?.dynamic = true
+        player.physicsBody?.categoryBitMask = playerCategory
+        player.physicsBody?.contactTestBitMask = enemyBulletCategory
+        player.physicsBody?.collisionBitMask = 0
+
         self.addChild(player)
-        createEnemy1(CGPointMake(500, 700))
+        
+        generateLevel()
+        
+        for i in 0...1{
+            createEnemy1(levelList[i].position)
+        }
+        levelList.removeAtIndex(0)
+        levelList.removeAtIndex(1)
+        
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
-        createEnemy1(CGPointMake(700, 700))
+//        createEnemy1(CGPointMake(500, 700))
+//        createEnemy1(CGPointMake(700, 700))
 
 
         
@@ -139,7 +167,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 damageEnemy(firstBody.node as SKSpriteNode, enemy: secondBody.node as SKSpriteNode)
                 
         }
+        if (firstBody.categoryBitMask & enemyBulletCategory) != 0 &&
+            (secondBody.categoryBitMask & playerCategory) != 0 && isHit == false{
+                damagePlayer(firstBody.node as SKSpriteNode, player: secondBody.node as SKSpriteNode)
+        }
     }
+    func damagePlayer(enemyBullet: SKSpriteNode, player: SKSpriteNode){
+        println("Player Hit! HP - 1")
+        isHit = true
+        var playerHP = player.userData?.valueForKey("health")!
+        var hpValue = playerHP! as Int
+        hpValue -= 1
+        player.userData!.setValue(Int(hpValue), forKey: "health")
+    }
+    
+    
     func damageEnemy(bullet: SKSpriteNode, enemy: SKSpriteNode){
         var enemy_count = active_Enemy.count
         var myString = enemy.userData?.valueForKey("health")!
@@ -159,6 +201,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
  
     
+    }
+    func generateLevel(){
+        levelList.append(type: Int(1), position: CGPointMake(500, 500))
+        levelList.append(type: Int(1), position: CGPointMake(600, 500))
+        levelList.append(type: Int(1), position: CGPointMake(400, 700))
+        levelList.append(type: Int(1), position: CGPointMake(600, 700))
     }
     
     
@@ -404,12 +452,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var enemy_One_Last_Update = NSTimeInterval(0)
     var time_Since_Enemy_One = NSTimeInterval(0)
-    var time_Until_Next_Action_Enemy_One = NSTimeInterval(0.5)
+    var time_Until_Next_Action_Enemy_One = NSTimeInterval(0.75)
+    
+    var player_Hit_Last_Update = NSTimeInterval(0)
+    var time_Since_Hit = NSTimeInterval(0)
+    var time_Until_Hittable = NSTimeInterval(2)
+    
     override func update(currentTime: CFTimeInterval) {
         
         let delta_Enemy_One = currentTime - enemy_One_Last_Update
+        let last_Damaged_Player = currentTime - player_Hit_Last_Update
+        
         enemy_One_Last_Update = currentTime
+        player_Hit_Last_Update = currentTime
+        
         time_Since_Enemy_One += delta_Enemy_One
+        if (isHit){
+            time_Since_Hit += last_Damaged_Player
+        }
+        
+        if (time_Since_Hit >= time_Until_Hittable){
+            isHit = false
+            println("Invincibility faded")
+            time_Since_Hit = NSTimeInterval(0)
+            time_Until_Hittable = NSTimeInterval(2)
+        }
+        
         var attacked = Int(0)
         
         
