@@ -225,20 +225,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func generateLevel(){
         
-//        levelList.append(type: Int(1), position: CGPointMake(400, 500))
-//        levelList.append(type: Int(1), position: CGPointMake(650, 550))
-//        levelList.append(type: Int(1), position: CGPointMake(400, 700))
-//        levelList.append(type: Int(1), position: CGPointMake(650, 650))
-//        
-//        levelList.append(type: Int(2), position: CGPointMake(700, 600))
-//        levelList.append(type: Int(2), position: CGPointMake(500, 400))
-//        levelList.append(type: Int(2), position: CGPointMake(750, 700))
-//        levelList.append(type: Int(2), position: CGPointMake(500, 500))
-//        
-//        levelList.append(type: Int(3), position: CGPointMake(700, 770))
-//        levelList.append(type: Int(4), position: CGPointMake(400, 670))
-//        levelList.append(type: Int(3), position: CGPointMake(700, 670))
-//        levelList.append(type: Int(4), position: CGPointMake(400, 570))
+        levelList.append(type: Int(1), position: CGPointMake(400, 500))
+        levelList.append(type: Int(1), position: CGPointMake(650, 550))
+        levelList.append(type: Int(1), position: CGPointMake(400, 700))
+        levelList.append(type: Int(1), position: CGPointMake(650, 650))
+        
+        levelList.append(type: Int(2), position: CGPointMake(700, 600))
+        levelList.append(type: Int(2), position: CGPointMake(500, 400))
+        levelList.append(type: Int(2), position: CGPointMake(750, 700))
+        levelList.append(type: Int(2), position: CGPointMake(500, 500))
+        
+        levelList.append(type: Int(3), position: CGPointMake(700, 770))
+        levelList.append(type: Int(4), position: CGPointMake(400, 670))
+        levelList.append(type: Int(3), position: CGPointMake(700, 670))
+        levelList.append(type: Int(4), position: CGPointMake(400, 570))
+        
+        levelList.append(type: Int(2), position: CGPointMake(670, 500))
+        levelList.append(type: Int(2), position: CGPointMake(500, 400))
+        levelList.append(type: Int(2), position: CGPointMake(700, 500))
+        levelList.append(type: Int(2), position: CGPointMake(500, 500))
         
         levelList.append(type: Int(5), position: CGPointMake(355, 520))
         
@@ -479,6 +484,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemy2.position = position1
         active_Enemy.append(enemy2)
         self.addChild(enemy2)
+        let speed = Float(1.2)
         
         let enemy_End_Positon_1 = CGPoint(x: position1.x + 150, y: position1.y + 200)
         let enemy_duration_1 = NSTimeInterval(speed)
@@ -501,7 +507,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func enemy_One_Spawn_Bullets(enemyPosition: CGPoint){
         var actionArray: [SKAction] = []
         for i in 0...7{
+            
             var enemy_bullet: SKSpriteNode = SKSpriteNode(imageNamed: "bulletB")
+
             enemy_bullet.setScale(CGFloat(0.35))
             enemy_bullet.physicsBody = SKPhysicsBody(circleOfRadius: enemy_bullet.size.width/2)
             enemy_bullet.physicsBody?.dynamic = true
@@ -594,34 +602,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(enemy_bullet)
             
             var dist = Int(700)
-            var enemy_bullet_Duration = NSTimeInterval(2)
+            var enemy_bullet_Duration = NSTimeInterval(3)
             switch i{
                 
             case 0:
-                var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x - 200,y:enemy_bullet.position.y + 700)
+                var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x - 350,y:enemy_bullet.position.y - 700)
                 var enemy_bullet_Move = SKAction.moveTo(enemy_bullet_End_Position, duration: enemy_bullet_Duration)
                 actionArray.append(enemy_bullet_Move)
                 break
             case 1:
-                var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x + 200,y:enemy_bullet.position.y + 700)
+                var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x + 350,y:enemy_bullet.position.y - 700)
                 //var enemy_bullet_Duration = NSTimeInterval(3)
                 var enemy_bullet_Move = SKAction.moveTo(enemy_bullet_End_Position, duration: enemy_bullet_Duration)
                 actionArray.append(enemy_bullet_Move)
                 break
             case 2:
-                var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x + 100,y:enemy_bullet.position.y + 700)
+                var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x + 175,y:enemy_bullet.position.y - 700)
                 //var enemy_bullet_Duration = NSTimeInterval(3)
                 var enemy_bullet_Move = SKAction.moveTo(enemy_bullet_End_Position, duration: enemy_bullet_Duration)
                 actionArray.append(enemy_bullet_Move)
                 break
             case 3:
-                var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x - 100,y:enemy_bullet.position.y + 700)
+                var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x - 175,y:enemy_bullet.position.y - 700)
                 //var enemy_bullet_Duration = NSTimeInterval(3)
                 var enemy_bullet_Move = SKAction.moveTo(enemy_bullet_End_Position, duration: enemy_bullet_Duration)
                 actionArray.append(enemy_bullet_Move)
                 break
             case 4:
-                var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x,y:enemy_bullet.position.y + 700)
+                var enemy_bullet_End_Position = CGPoint(x:enemy_bullet.position.x,y:enemy_bullet.position.y - 700)
                 //var enemy_bullet_Duration = NSTimeInterval(3)
                 var enemy_bullet_Move = SKAction.moveTo(enemy_bullet_End_Position, duration: enemy_bullet_Duration)
                 actionArray.append(enemy_bullet_Move)
@@ -681,17 +689,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             var myString = enemy.userData?.valueForKey("type")!
             var typeValue = myString! as Int
             if (time_Since_Enemy_One >= time_Until_Next_Action_Enemy_One) {
-                if typeValue == Int(5){
-                    bossBullets(enemy.position)
-                }else{
-                    enemy_One_Spawn_Bullets(enemy.position)
-                    attacked = 1
-                }
+                enemy_One_Spawn_Bullets(enemy.position)
+                attacked = 1
+                
             }
         }
         if attacked == 1{
             time_Since_Enemy_One = NSTimeInterval(0)
-            time_Until_Next_Action_Enemy_One = NSTimeInterval(0.4)
+            if isBoss {
+                time_Until_Next_Action_Enemy_One = NSTimeInterval(0.2)
+            }else{
+                time_Until_Next_Action_Enemy_One = NSTimeInterval(0.4)
+            }
             attacked = 0
         }
         
