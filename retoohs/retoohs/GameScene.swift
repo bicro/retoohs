@@ -37,7 +37,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isHit = false
     var levelList: [(type: Int, position: CGPoint)] = []
     var isBoss = false
-
+    
+    var first: Bool = false
+    let myStartScreen: SKSpriteNode = SKSpriteNode(imageNamed: "startscreen")
     
    
     
@@ -67,40 +69,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //self.addChild(enemy)
         
-        //draw background
-        myBackground.position = CGPointMake(self.size.width/2, self.size.height/2)
-        self.addChild(myBackground)
-
         
-        //draw player
-        
-        player.position = CGPointMake(self.size.width/2, 40)
-        
-        
-        player.userData = NSMutableDictionary()
-        
-        player.userData!.setValue(Int(3), forKey: "health")
-
-        
-        player.setScale(CGFloat(1))
-        player.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(player.size.width/6))
-        player.physicsBody?.dynamic = true
-        player.physicsBody?.categoryBitMask = playerCategory
-        player.physicsBody?.contactTestBitMask = enemyBulletCategory
-        player.physicsBody?.collisionBitMask = 0
-
-        self.addChild(player)
-        
-        generateLevel()
-        spawnEnemies()
-        
-        
-        physicsWorld.gravity = CGVectorMake(0, 0)
-        physicsWorld.contactDelegate = self
-//        createEnemy1(CGPointMake(500, 700))
-//        createEnemy1(CGPointMake(700, 700))
-
-
+        myStartScreen.position = CGPointMake(self.size.width/2, self.size.height/3)
+        self.addChild(myStartScreen)
         
     }
     func spawnEnemies(){
@@ -659,6 +630,44 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var time_Until_Hittable = NSTimeInterval(2)
     
     override func update(currentTime: CFTimeInterval) {
+        
+        if(!first){
+            first = true
+            sleep(3)
+            //draw background
+            myBackground.position = CGPointMake(self.size.width/2, self.size.height/2)
+            self.addChild(myBackground)
+            
+            
+            //draw player
+            
+            player.position = CGPointMake(self.size.width/2, 40)
+            
+            
+            player.userData = NSMutableDictionary()
+            
+            player.userData!.setValue(Int(3), forKey: "health")
+            
+            
+            player.setScale(CGFloat(1))
+            player.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(player.size.width/6))
+            player.physicsBody?.dynamic = true
+            player.physicsBody?.categoryBitMask = playerCategory
+            player.physicsBody?.contactTestBitMask = enemyBulletCategory
+            player.physicsBody?.collisionBitMask = 0
+            
+            self.addChild(player)
+            
+            generateLevel()
+            spawnEnemies()
+            
+            
+            physicsWorld.gravity = CGVectorMake(0, 0)
+            physicsWorld.contactDelegate = self
+            //        createEnemy1(CGPointMake(500, 700))
+            //        createEnemy1(CGPointMake(700, 700))
+
+        }
         
         if(!levelList.isEmpty && active_Enemy.isEmpty){
             spawnEnemies()
